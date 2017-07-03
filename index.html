@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ping Pong</title>
+</head>
+<body>
+   <main>
+   	<section>
+   		
+   	</section>
+   	<div id="mainframe">
+   	    <div id="ball">
+   	    </div>
+   	    <div id="playerA">
+   	    </div>
+   	    <div id="playerB">
+   	    </div>
+   	</div>
+   </main>
+
+
+</body>
+<style type="text/css">
+	#mainframe{
+		position: fixed;
+		width: 700px;
+		height: 400px;
+		top:100px;
+		left:300px;
+	    margin: auto;
+		background-color: lightgrey;
+	}
+	#ball{
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background-color: blue;
+		position: absolute;
+	}
+	#playerA{
+		background-color: red;
+		position: absolute;
+		height: 50px;
+		width: 10px;
+		left: 690px;
+		top: 175px;
+	}
+	#playerB{
+		background-color: yellow;
+		height: 50px;
+		width: 10px;
+		top: 175px;
+		position: absolute;
+	}
+</style>
+<script type="text/javascript">
+    var width=700;
+    var height=400;
+    var dx=1;
+    var dy=1;
+    var scoreA=0;
+    var scoreB=0;
+	var ball=document.getElementById("ball");
+	var playerB=document.getElementById("playerB");
+	var playerA=document.getElementById("playerA");
+	playerA.style.top="175px";
+	playerB.style.top="175px";
+    document.body.addEventListener('keydown',function(event){
+    	console.log(event.key);
+		if(event.key =='ArrowDown'){
+			var y = parseInt(playerA.style.top.slice(0,-2));
+			if(y<345){
+				y=y+10;
+				playerA.style.top=y+'px';
+			}
+		}
+		else if(event.key =='ArrowUp'){
+			var y = parseInt(playerA.style.top.slice(0,-2));
+			if(y>5){
+				y=y-10;
+				playerA.style.top=y+'px';
+			}
+		}
+		else if(event.key =='w'){
+			var y = parseInt(playerB.style.top.slice(0,-2));
+			if(y>5){
+				y=y-10;
+				playerB.style.top=y+'px';
+			}
+		}
+		else if(event.key =='s'){
+			var y = parseInt(playerB.style.top.slice(0,-2));
+			if(y<345){
+				y=y+10;
+				playerB.style.top=y+'px';
+			}
+		}
+	});
+	ball.style.top="0px";
+	ball.style.left="0px";
+	var bounce=function(){
+		var x=parseInt(ball.style.left.slice(0,-2));
+		var y=parseInt(ball.style.top.slice(0,-2));
+		x=x+dx;
+		y=y+dy;
+        if(y>390||y<0){
+                	dy=-dy;
+        }
+        if(x>690||x<0){
+        	dx=-dx;
+        }
+       
+		ball.style.left=x+"px";
+		ball.style.top=y+"px";
+	}
+	setInterval(bounce,3);
+</script>
+</html>
