@@ -125,7 +125,7 @@
 		var ya=parseInt(playerA.style.top.slice(0,-2));
 		var yb=parseInt(playerB.style.top.slice(0,-2));
 		console.log(ya);
-	    if(y>390||y<0){
+	    if(y>380||y<0){
                 	dy=-dy;
         }
         else if(x>=670&&y>ya&&(y<(ya+50))){
@@ -134,13 +134,13 @@
         else if(x<=10&&y>yb&&(y<(yb+50))){
         	dx=-dx;
         }
-        else if(x>690){
+        else if(x>680){
              scoreB++;
              playerA.style.top="175px";
              playerB.style.top="175px";
              y=180;
              x=10;
-             scoreofb.innerText=scoreB+""
+            
 
         }
        else if(x<0){
@@ -149,13 +149,27 @@
              playerB.style.top="175px";
              y=180;
              x=670;
-             scoreofa.innerText=scoreA+""
+            
         }
         x=x+dx;
 		y=y+dy;
 		ball.style.left=x+"px";
 		ball.style.top=y+"px";
+		 scoreofb.innerText=scoreB+""
+         scoreofa.innerText=scoreA+""
+		if(scoreA==10||scoreB==10){
+			clearInterval(number);
+			 if(scoreA==10){
+			 	alert("Red Won!!!!!");
+			 	document.location.reload();
+			 }
+			 else{
+			 	alert("Yellow Won!!!!");
+			 	document.location.reload();
+			 }
+
+		}
 	}
-	var number=setInterval(bounce,5);
+	var number=setInterval(bounce,1);
 </script>
 </html>
