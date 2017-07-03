@@ -6,7 +6,14 @@
 <body>
    <main>
    	<section>
-   		
+   		   <div class="a">
+   	       <h2>Score Red</h2>
+   	       <h3 id="scoreofa"></h3>
+   	       </div>
+   	       <div class="b">
+   	       <h2 >Score Yellow</h2>
+   	       <h3 id="scoreofb"></h3>
+   	       </div>
    	</section>
    	<div id="mainframe">
    	    <div id="ball">
@@ -52,6 +59,19 @@
 		top: 175px;
 		position: absolute;
 	}
+	.a{
+		left:900px;
+		height: 100px;
+		position: fixed;
+	    margin-bottom: 10px;
+	}
+	.b{
+		height: 100px;
+		left: 300px;
+		position: fixed;
+		margin-bottom: 10px;;
+	}
+	
 </style>
 <script type="text/javascript">
     var width=700;
@@ -63,56 +83,79 @@
 	var ball=document.getElementById("ball");
 	var playerB=document.getElementById("playerB");
 	var playerA=document.getElementById("playerA");
+	var scoreofa=document.getElementById("scoreofa");
+	var scoreofb=document.getElementById("scoreofb");
 	playerA.style.top="175px";
 	playerB.style.top="175px";
     document.body.addEventListener('keydown',function(event){
-    	console.log(event.key);
 		if(event.key =='ArrowDown'){
 			var y = parseInt(playerA.style.top.slice(0,-2));
 			if(y<345){
-				y=y+10;
+				y=y+20;
 				playerA.style.top=y+'px';
 			}
 		}
 		else if(event.key =='ArrowUp'){
 			var y = parseInt(playerA.style.top.slice(0,-2));
 			if(y>5){
-				y=y-10;
+				y=y-20;
 				playerA.style.top=y+'px';
 			}
 		}
 		else if(event.key =='w'){
 			var y = parseInt(playerB.style.top.slice(0,-2));
 			if(y>5){
-				y=y-10;
+				y=y-20;
 				playerB.style.top=y+'px';
 			}
 		}
 		else if(event.key =='s'){
 			var y = parseInt(playerB.style.top.slice(0,-2));
 			if(y<345){
-				y=y+10;
+				y=y+20;
 				playerB.style.top=y+'px';
 			}
 		}
 	});
-	ball.style.top="0px";
-	ball.style.left="0px";
+	ball.style.top="20px";
+	ball.style.left="20px";
 	var bounce=function(){
 		var x=parseInt(ball.style.left.slice(0,-2));
 		var y=parseInt(ball.style.top.slice(0,-2));
-		x=x+dx;
-		y=y+dy;
-        if(y>390||y<0){
+		var ya=parseInt(playerA.style.top.slice(0,-2));
+		var yb=parseInt(playerB.style.top.slice(0,-2));
+		console.log(ya);
+	    if(y>390||y<0){
                 	dy=-dy;
         }
-        if(x>690||x<0){
+        else if(x>=670&&y>ya&&(y<(ya+50))){
         	dx=-dx;
         }
-       
+        else if(x<=10&&y>yb&&(y<(yb+50))){
+        	dx=-dx;
+        }
+        else if(x>690){
+             scoreB++;
+             playerA.style.top="175px";
+             playerB.style.top="175px";
+             y=180;
+             x=10;
+             scoreofb.innerText=scoreB+""
+
+        }
+       else if(x<0){
+             scoreA++;
+             playerA.style.top="175px";
+             playerB.style.top="175px";
+             y=180;
+             x=670;
+             scoreofa.innerText=scoreA+""
+        }
+        x=x+dx;
+		y=y+dy;
 		ball.style.left=x+"px";
 		ball.style.top=y+"px";
 	}
-	setInterval(bounce,3);
+	var number=setInterval(bounce,5);
 </script>
 </html>
