@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Top Button</title>
+</head>
+<body>
+ <div>
+  </div>
+  <br>
+  <div>
+  </div>
+  <br>
+  <div>
+  </div>
+  <br>
+  <div>
+  </div>
+  <br>
+    <div>
+  </div>
+  <br>
+  <div>
+  </div>
+  <br>
+  <div>
+  </div>
+  <br>
+  <div>
+  </div
+    <br>
+    <button id="top">Click</button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <style type="text/css">
+    	div{
+  width:100px;
+  height:100px;
+  background-color:red;
+}
+    </style>
+    <script type="text/javascript">
+    	var top=document.getElementById("top");
+document.body.addEventListener("click",me2);
+function me2(){
+   var y=window.scrollY;
+   var number=setInterval(me,100);
+    function me(){
+  if(y<=0){
+     clearInterval(number);
+   }
+  console.log(y);
+  y=window.scrollY-10;
+  window.scroll(0,y);
+}
+}
+    </script>
+</body>
+</html>
