@@ -118,6 +118,11 @@ var movedownbutton=function(downid){
   var element=document.getElementById(downid);
   element.addEventListener('click',movedown);
   var number;
+  window.addEventListener('wheel', function(event){
+        if(number!=null && event.deltaY < 0){
+            clearInterval(number);
+        }
+    });
    function movedown(){
     console.log("triggered");
     var y=window.scrollY;
