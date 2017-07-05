@@ -64,7 +64,7 @@
  
     <br>
     <button id="top">Click</button>
-    <button id="top2">move down</button>
+    <button id="down">move down</button>
     <style type="text/css">
     	div{
   width:100px;
@@ -76,17 +76,23 @@
   right: 20px;
   position: fixed;
 }
-#top2{
+#down{
   top:20px;
   right: 20px;
   position: fixed;
 }
-    </style>
+button{
+  position: fixed;
+}  
+body{
+  height: content;
+} 
+ </style>
     <script type="text/javascript">
 var moveupbutton=function(topid){
 var top=document.getElementById(topid);
+var number;
 top.addEventListener("click",moveup);
-var number=1;
 window.addEventListener('wheel', function(event){
         if(number!=null && event.deltaY > 0){
             clearInterval(number);
@@ -107,7 +113,29 @@ function moveup(){
       window.scroll(0,y);
    },10);
 }}
-moveupbutton("top")
+moveupbutton("top");
+var movedownbutton=function(downid){
+  var element=document.getElementById(downid);
+  element.addEventListener('click',movedown);
+  var number;
+   function movedown(){
+    console.log("triggered");
+    var y=window.scrollY;
+    if(number!=null){
+      clearInterval(number);
+    }
+    var maxy=document.body.offsetHeight;
+    var dy =(maxy-y)/100;
+    number=setInterval(function(){
+       if(y>=maxy-window.innerHeight){
+        clearInterval(number);
+       }
+       y=window.scrollY+dy;
+       window.scroll(0,y);
+    },10);
+  }
+}
+movedownbutton("down")
 </script>
 </body>
 </html>
