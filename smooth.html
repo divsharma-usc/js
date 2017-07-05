@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Smooth</title>
+</head>
+<body>
+  <header id="links">
+  	<nav>
+  	  <ul>
+  		<li><a href="#home" id="homea">Home</a></li>
+  		<li><a href="#team" id="teama">Team</a></li>
+  		<li><a href="#aboutus" id="aboutusa">About Us</a></li>
+  		<li><a href="#contact" id="contacta">Contact</a></li>
+  	 </ul>
+  	</nav>
+  </header>
+  <section id="home">
+  	  <main><h1>Home</h1></main>
+  	  <section>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+ 	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  </section>
+  </section>
+  <section id="team">
+  	  <main><h1>Team</h1></main>
+  	  <section>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+ 	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  </section>
+  </section>
+  <section id="aboutus">
+  	  <main><h1>About Us</h1></main>
+  	  <section>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+ 	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  </section>
+  </section>
+  <section id="contact">
+  	  <main><h1>Contact Us</h1></main>
+  	  <section>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+ 	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  	 <h1>Hello</h1>
+  	  </section>
+  </section>
+</body>
+<style type="text/css">
+	*{
+		padding: 0px;
+		margin:0px;
+	}
+</style>
+</html>
+<script type="text/javascript">
+var element=document.querySelectorAll('a');
+var header=document.getElementById("links").offsetHeight;
+var home=document.getElementById("home").offsetHeight;
+var team=document.getElementById("team").offsetHeight;
+var aboutus=document.getElementById("aboutus").offsetHeight;
+var contact=document.getElementById("contact").offsetHeight;
+var loc=0;
+var number;
+for(var i=0;i<element.length;i++){
+	   console.log(element[i]);
+	   console.log(element[i].id);
+       element[i].addEventListener("click",function(event) {
+       	     event.preventDefault();
+             var find=designation(event.target.id);
+             console.log(find);
+             var y=window.scrollY;
+             var dy=(find-y)/100; 
+             console.log(y);
+             console.log(dy);
+             number=setInterval(function(){
+             	console.log("Hello");
+             	if(y>=find){
+                   clearInterval(number);
+             	}
+             	y=window.scrollY+dy;
+             	window.scroll(0,y);
+             },100);
+       }); 
+}
+function designation(elementid){
+      if(elementid=="homea"){
+      	  loc=header+10;
+      }
+      else if(elementid=="teama"){
+      	loc=header+home+10;
+      }
+      else if(elementid=="aboutusa"){
+      	loc=header+home+team+10;
+      }
+      else if(elementid=="contacta"){
+      	loc=header+home+team+aboutus+10;
+      }
+      return loc;
+}
+
+
+</script>
