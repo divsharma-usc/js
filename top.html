@@ -16,46 +16,98 @@
   <div>
   </div>
   <br>
+  <div>
+  </div>
+  <br>
+  </div>
+  <br>
+  <div>
+  </div>
+  <br>
+  <div>
+  </div>
+  <br>
+  <div>
+  </div>
+  <br>
+  <div>
+  </div>
+  <br>
+  </div>
+  <br>
+  <div>
+  </div>
+  <br>
+  <div>
+  </div>
+  <br>
+  <div>
+  </div>
+  <br>
     <div>
   </div>
   <br>
-  <div>
   </div>
   <br>
   <div>
   </div>
   <br>
   <div>
-  </div
+  </div>
+  <br>
+  <div>
+  </div>
+  <br>
+    <div>
+  </div>
+  <br>
+ 
     <br>
     <button id="top">Click</button>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <button id="top2">move down</button>
     <style type="text/css">
     	div{
   width:100px;
   height:100px;
   background-color:red;
 }
+#top{
+  bottom:20px;
+  right: 20px;
+  position: fixed;
+}
+#top2{
+  top:20px;
+  right: 20px;
+  position: fixed;
+}
     </style>
     <script type="text/javascript">
-    	var top=document.getElementById("top");
-document.body.addEventListener("click",me2);
-function me2(){
-   var y=window.scrollY;
-   var number=setInterval(me,100);
-    function me(){
-  if(y<=0){
-     clearInterval(number);
-   }
-  console.log(y);
-  y=window.scrollY-10;
-  window.scroll(0,y);
-}
-}
-    </script>
+var moveupbutton=function(topid){
+var top=document.getElementById(topid);
+top.addEventListener("click",moveup);
+var number=1;
+window.addEventListener('wheel', function(event){
+        if(number!=null && event.deltaY > 0){
+            clearInterval(number);
+        }
+    });
+ 
+function moveup(){
+    var y=window.scrollY;
+    if(number!=null){
+      clearInterval(number);
+    } 
+     var dy=y/100; 
+    number=setInterval( function(){
+            if(y<=0){
+         clearInterval(number);
+       }
+      y=window.scrollY-dy;
+      window.scroll(0,y);
+   },10);
+}}
+moveupbutton("top")
+</script>
 </body>
 </html>
