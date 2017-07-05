@@ -119,6 +119,7 @@
 </style>
 </html>
 <script type="text/javascript">
+letsgo=function(){
 var element=document.querySelectorAll('a');
 var header=document.getElementById("links").offsetHeight;
 var home=document.getElementById("home").offsetHeight;
@@ -127,6 +128,11 @@ var aboutus=document.getElementById("aboutus").offsetHeight;
 var contact=document.getElementById("contact").offsetHeight;
 var loc=0;
 var number;
+window.addEventListener('wheel', function(event){
+        if(number!=null && event.deltaY <0){
+            clearInterval(number);
+        }
+    });
 for(var i=0;i<element.length;i++){
 	   console.log(element[i]);
 	   console.log(element[i].id);
@@ -153,16 +159,17 @@ function designation(elementid){
       	  loc=header+10;
       }
       else if(elementid=="teama"){
-      	loc=header+home+10;
+      	loc=header+home-20;
       }
       else if(elementid=="aboutusa"){
-      	loc=header+home+team+10;
+      	loc=header+home+team-30;
       }
       else if(elementid=="contacta"){
-      	loc=header+home+team+aboutus+10;
+      	loc=header+home+team+aboutus;
       }
       return loc;
-}
+}}
+letsgo();
 
 
 </script>
