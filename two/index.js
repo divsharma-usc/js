@@ -23,11 +23,8 @@ function find(){
 }
 function fill(){
 	var position=find();
-	console.log("length is "+empty.length);
-	console.log(position);
 	var position2=empty[position];
 	arr[parseInt(position2/4)][position2%4].value=2;
-	arr[parseInt(position2/4)][position2%4].innerHTML="2"
 	draw();
 	empty.splice(position,1);
 }
@@ -74,6 +71,10 @@ function manipulate(dir){
 						score=score+arr[i][k].value;
 						arr[i][j].value=undefined;
 						empty.push(arr[i][j].id);
+						if(arr[i][k].value==2048){
+							arr[i][k].value=undefined;
+							empty.push(arr[i][k].id);
+						}
 					}
 					else if(arr[i][k].value!=undefined&&arr[i][k].value!=arr[i][j].value&&k+1!=j){
 						arr[i][k+1].value=arr[i][j].value;
@@ -107,6 +108,10 @@ function manipulate(dir){
 						score=score+arr[i][k].value
 						arr[i][j].value=undefined;
 						empty.push(arr[i][j].id);
+						if(arr[i][k].value==2048){
+							arr[i][k].value=undefined;
+							empty.push(arr[i][k].id);
+						}
 					}
 					else if(arr[i][k].value!=undefined&&arr[i][k].value!=arr[i][j].value&&k-1!=j){
 						arr[i][k-1].value=arr[i][j].value;
@@ -140,6 +145,10 @@ function manipulate(dir){
 						score=score+arr[k][j].value;
 						arr[i][j].value=undefined;
 						empty.push(arr[i][j].id);
+						if(arr[k][j].value==2048){
+							arr[k][j].value=undefined;
+							empty.push(arr[k][j].id);
+						}
 					}
 					else if(arr[k][j].value!=undefined&&arr[k][j].value!=arr[i][j].value&&k+1!=i){
 						arr[k+1][j].value=arr[i][j].value;
@@ -147,6 +156,7 @@ function manipulate(dir){
 						var a=empty.indexOf(arr[k+1][j].id);
 						empty.splice(a,1);
 						empty.push(arr[i][j].id);
+
 					}
 				}
 			}
@@ -173,6 +183,10 @@ function manipulate(dir){
 						score=score+arr[k][j].value;
 						arr[i][j].value=undefined;
 						empty.push(arr[i][j].id);
+						if(arr[k][j].value==2048){
+							arr[k][j].value=undefined;
+							empty.push(arr[k][j].id);
+						}
 					}
 					else if(arr[k][j].value!=undefined&&arr[k][j].value!=arr[i][j].value&&k-1!=i){
 						arr[k-1][j].value=arr[i][j].value;
@@ -193,11 +207,36 @@ function manipulate(dir){
 function draw(){
 	for(var i=0;i<4;i++){
 		for(var j=0;j<4;j++){
-			if(arr[i][j].value!=undefined){
+			if(arr[i][j].value!=undefined&&arr[i][j].value!=NaN){
 				arr[i][j].innerHTML=arr[i][j].value
+				if(arr[i][j].value==2){
+					arr[i][j].style["background-color"]="blue";
+				}
+				else if(arr[i][j].value==4){
+					arr[i][j].style["background-color"]="green";
+				}
+				else if(arr[i][j].value==8){
+					arr[i][j].style["background-color"]="brown";
+				}
+				else if(arr[i][j].value==16){
+					arr[i][j].style["background-color"]="pink";
+				}
+				else if(arr[i][j].value==32){
+					arr[i][j].style["background-color"]="pink";
+				}
+				else if(arr[i][j].value==64){
+					arr[i][j].style["background-color"]="pink";
+				}
+				else if(arr[i][j].value==1028){
+					arr[i][j].style["background-color"]="pink";
+				}
+				else if(arr[i][j].value==2048){
+					arr[i][j].style["background-color"]="pink";
+				}
 			}
 			else{
 				arr[i][j].innerHTML="";
+				arr[i][j].style["background-color"]="red"
 			}
 		}
 
