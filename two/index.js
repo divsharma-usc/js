@@ -30,6 +30,10 @@ function fill(){
 fill();
 console.log(empty);
 document.body.addEventListener('keydown',function(event){
+	     if(empty.length==0){
+	     	alert("You Loose !!!");
+	     	window.location.reload();
+	     }
          if(event.key=="ArrowDown"){
          	manipulate(-1)
          }
@@ -76,11 +80,41 @@ function manipulate(dir){
 
 		}
 	}
+	if(dir==2){
+		for(var i=3;i>=0;i--){
+			for(var j=2;j>=0;j--){
+				if(arr[i][j].value!=undefined){
+					var k = j+1;
+					while((arr[i][k].value==undefined)&&k<3){
+						k++;
+					}
+					if(arr[i][k].value==undefined){
+						arr[i][k].value=arr[i][j].value;
+						arr[i][j].value=undefined;
+						var a=empty.indexOf(arr[i][k].id);
+						empty.splice(a,1);
+						empty.push(arr[i][j].id);
+					}
+					else if(arr[i][k].value!=undefined&&arr[i][k].value==arr[i][j].value){
+						arr[i][k].value*=2;
+						arr[i][j].value=undefined;
+						empty.push(arr[i][j].id);
+					}
+					else if(arr[i][k].value!=undefined&&arr[i][k].value!=arr[i][j].value&&k-1!=j){
+						arr[i][k-1].value=arr[i][j].value;
+						arr[i][j].value=undefined;
+						var a=empty.indexOf(arr[i][k-1].id);
+						empty.splice(a,1);
+						empty.push(arr[i][j].id);
+					}
+				}
+			}
+
+		}
+	}
 
 	draw();
-	console.log(empty);
 	fill();
-	console.log(empty);
 }
 function draw(){
 	for(var i=0;i<4;i++){
