@@ -43,13 +43,12 @@ function manipulate(dir){
 	if(dir==-2){
 		for(var i=0;i<4;i++){
 			for(var j=1;j<4;j++){
-				if(arr[i][j].value!=undefined||arr[i][j].value!=NaN){
-					console.log(i+" "+j+" "+arr[i][j].value);
+				if(arr[i][j].value!=undefined){
 					var k = j-1;
-					while((arr[i][k].value==undefined||arr[i][k].value==NaN)&&k>0){
+					while((arr[i][k].value==undefined)&&k>0){
 						k--;
 					}
-					if(arr[i][k].value==undefined||arr[i][k].value==NaN){
+					if(arr[i][k].value==undefined){
 						arr[i][k].value=arr[i][j].value;
 						arr[i][j].value=undefined;
 						var a=empty.indexOf(arr[i][k].id);
@@ -61,12 +60,12 @@ function manipulate(dir){
 
 		}
 	}
+	console.log(empty);
 	draw();
 }
 function draw(){
 	for(var i=0;i<4;i++){
 		for(var j=0;j<4;j++){
-			console.log("hello");
 			if(arr[i][j].value!=undefined){
 				arr[i][j].innerHTML=arr[i][j].value
 			}
