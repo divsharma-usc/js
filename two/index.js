@@ -59,6 +59,18 @@ function manipulate(dir){
 						empty.splice(a,1);
 						empty.push(arr[i][j].id);
 					}
+					else if(arr[i][k].value!=undefined&&arr[i][k].value==arr[i][j].value){
+						arr[i][k].value*=2;
+						arr[i][j].value=undefined;
+						empty.push(arr[i][j].id);
+					}
+					else if(arr[i][k].value!=undefined&&arr[i][k].value!=arr[i][j].value&&k+1!=j){
+						arr[i][k+1].value=arr[i][j].value;
+						arr[i][j].value=undefined;
+						var a=empty.indexOf(arr[i][k+1].id);
+						empty.splice(a,1);
+						empty.push(arr[i][j].id);
+					}
 				}
 			}
 
