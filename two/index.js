@@ -15,12 +15,16 @@ for(var i=0;i<blocks.length;i++){
      empty[i]=blocks[i].id;
 }
 function find(){
-	return Math.floor(Math.random()*empty.length);
+	return Math.floor(Math.random()*(empty.length));
 }
 function fill(){
 	var position=find();
-	arr[parseInt(position/4)][position%4].value=2;
-	arr[parseInt(position/4)][position%4].innerHTML="2"
+	console.log("length is "+empty.length);
+	console.log(position);
+	var position2=empty[position];
+	arr[parseInt(position2/4)][position2%4].value=2;
+	arr[parseInt(position2/4)][position2%4].innerHTML="2"
+	draw();
 	empty.splice(position,1);
 }
 fill();
@@ -60,8 +64,11 @@ function manipulate(dir){
 
 		}
 	}
-	console.log(empty);
+
 	draw();
+	console.log(empty);
+	fill();
+	console.log(empty);
 }
 function draw(){
 	for(var i=0;i<4;i++){
