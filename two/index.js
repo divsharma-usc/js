@@ -38,6 +38,7 @@ document.body.addEventListener('keydown',function(event){
          	manipulate(-1)
          }
          else if(event.key=="ArrowUp"){
+           console.log("yes")
             manipulate(1);
          }
          else if(event.key=="ArrowLeft"){
@@ -112,6 +113,72 @@ function manipulate(dir){
 
 		}
 	}
+	if(dir==1){
+		for(var j=0;j<4;j++){
+			for(var i=1;i<4;i++){
+				if(arr[i][j].value!=undefined){
+					var k = i-1;
+					while((arr[k][j].value==undefined)&&k>0){
+						k--;
+					}
+					if(arr[k][j].value==undefined){
+						arr[k][j].value=arr[i][j].value;
+						arr[i][j].value=undefined;
+						var a=empty.indexOf(arr[k][j].id);
+						empty.splice(a,1);
+						empty.push(arr[i][j].id);
+					}
+					else if(arr[k][j].value!=undefined&&arr[k][j].value==arr[i][j].value){
+						arr[k][j].value*=2;
+						arr[i][j].value=undefined;
+						empty.push(arr[i][j].id);
+					}
+					else if(arr[k][j].value!=undefined&&arr[k][j].value!=arr[i][j].value&&k+1!=i){
+						arr[k+1][j].value=arr[i][j].value;
+						arr[i][j].value=undefined;
+						var a=empty.indexOf(arr[k+1][j].id);
+						empty.splice(a,1);
+						empty.push(arr[i][j].id);
+					}
+				}
+			}
+
+		}
+	}
+	if(dir==-1){
+		for(var j=3;j>=0;j--){
+			for(var i=2;i>=0;i--){
+				if(arr[i][j].value!=undefined){
+					var k = i+1;
+					while((arr[k][j].value==undefined)&&k<3){
+						k++;
+					}
+					if(arr[k][j].value==undefined){
+						arr[k][j].value=arr[i][j].value;
+						arr[i][j].value=undefined;
+						var a=empty.indexOf(arr[k][j].id);
+						empty.splice(a,1);
+						empty.push(arr[i][j].id);
+					}
+					else if(arr[k][j].value!=undefined&&arr[k][j].value==arr[i][j].value){
+						arr[k][j].value*=2;
+						arr[i][j].value=undefined;
+						empty.push(arr[i][j].id);
+					}
+					else if(arr[k][j].value!=undefined&&arr[k][j].value!=arr[i][j].value&&k-1!=i){
+						arr[k-1][j].value=arr[i][j].value;
+						arr[i][j].value=undefined;
+						var a=empty.indexOf(arr[k-1][j].id);
+						empty.splice(a,1);
+						empty.push(arr[i][j].id);
+					}
+				}
+			}
+
+		}
+	}
+	
+
 
 	draw();
 	fill();
