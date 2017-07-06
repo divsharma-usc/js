@@ -59,29 +59,40 @@ function show(){
 	var daysofmonth=obj.days;
 	var dayofmonth=obj.day;
 	var setdate=1;
-   show_month_and_year.innerHTML=months[month]+"-"+year;
+    var newdate=new Date();
+   show_month_and_year.innerHTML='<h2>'+months[month]+"-"+year+'</h1>';
    htmltable='<table>'+'<tr>'
    for(var i=0;i<7;i++){
-   	   htmltable=htmltable+'<th>'+" "+days[i]+" "+'</th>'
+   	   htmltable=htmltable+'<th id="daysheading">'+" "+days[i]+" "+'</th>'
    }
     htmltable=htmltable+'</tr>'+'<tr>'
    for(var i=0;i<7;i++){
    	   if(i<dayofmonth)
-   	   htmltable=htmltable+'<th>'+" "+'</th>'
+   	   htmltable=htmltable+'<th id="box">'+" "+'</th>'
    	   else{
-   	   	 htmltable=htmltable+'<th>'+setdate+'</th>'
+   	   	 if(setdate==newdate.getDate()&&month==newdate.getMonth()&&year==newdate.getFullYear())
+   	                htmltable=htmltable+'<th id="box2">'+setdate+'</th>'
+   	     else
+   	   	            htmltable=htmltable+'<th id="box">'+setdate+'</th>'
    	   	 setdate++;
    	   }
    }
    htmltable=htmltable+'</tr>'
    while(setdate<=daysofmonth){
    	htmltable=htmltable+'<tr>';
-   	     for(var i=0;i<7;i++){
-   	     	htmltable=htmltable+'<th>'+setdate+'</th>'
-   	   	    setdate++;
-   	   	    if(setdate>daysofmonth)
-   	   	    	break;
-   	     }
+   	     for(var i=0;i<7;i++){ 
+   	     
+   	     
+   	     	if(setdate>daysofmonth)
+   	     	htmltable=htmltable+'<th id="box">'+" "+'</th>'
+   	        else{
+   	        if(setdate==newdate.getDate()&&month==newdate.getMonth()&&year==newdate.getFullYear())
+   	              htmltable=htmltable+'<th id="box2">'+setdate+'</th>'
+   	        else
+   	     	      htmltable=htmltable+'<th id="box">'+setdate+'</th>'
+   	   	    setdate++; 
+   	   	    }
+   	 	     }
    	htmltable=htmltable+'</tr>'
    }
    htmltable=htmltable+'</table>'
