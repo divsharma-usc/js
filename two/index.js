@@ -1,6 +1,10 @@
 function game(){
 var blocks=document.querySelectorAll('div');
 var score_counter=document.getElementById("score");
+var reply=document.getElementById("reply");
+reply.addEventListener("click",function(){
+	window.location.reload();
+});
 var empty=[];
 var score=0;
 score_counter.innerHTML=score;
@@ -208,35 +212,44 @@ function draw(){
 	for(var i=0;i<4;i++){
 		for(var j=0;j<4;j++){
 			if(arr[i][j].value!=undefined&&arr[i][j].value!=NaN){
-				arr[i][j].innerHTML=arr[i][j].value
+				arr[i][j].innerHTML="<h1>"+arr[i][j].value+"</h1>"
 				if(arr[i][j].value==2){
-					arr[i][j].style["background-color"]="blue";
+					arr[i][j].style["background-color"]="#EEE4DA";
 				}
 				else if(arr[i][j].value==4){
-					arr[i][j].style["background-color"]="green";
+					arr[i][j].style["background-color"]="#EDE0C8";
 				}
 				else if(arr[i][j].value==8){
-					arr[i][j].style["background-color"]="brown";
+					arr[i][j].style["background-color"]="#F59563";
 				}
 				else if(arr[i][j].value==16){
-					arr[i][j].style["background-color"]="pink";
+					arr[i][j].style["background-color"]="#EDCC61";
 				}
 				else if(arr[i][j].value==32){
-					arr[i][j].style["background-color"]="pink";
+					arr[i][j].style["background-color"]="#F67C5F";
 				}
 				else if(arr[i][j].value==64){
-					arr[i][j].style["background-color"]="pink";
+					arr[i][j].style["background-color"]="#F65E3B";
 				}
-				else if(arr[i][j].value==1028){
-					arr[i][j].style["background-color"]="pink";
+				else if(arr[i][j].value==128){
+					arr[i][j].style["background-color"]="#EDCF72";
+				}
+				else if(arr[i][j].value==256){
+					arr[i][j].style["background-color"]="#EDCC61";
+				}
+				else if(arr[i][j].value==512){
+					arr[i][j].style["background-color"]="#EDC850";
+				}
+				else if(arr[i][j].value==1024){
+					arr[i][j].style["background-color"]="#EDC53F";
 				}
 				else if(arr[i][j].value==2048){
-					arr[i][j].style["background-color"]="pink";
+					arr[i][j].style["background-color"]="#EDC22E";
 				}
 			}
 			else{
 				arr[i][j].innerHTML="";
-				arr[i][j].style["background-color"]="red"
+				arr[i][j].style["background-color"]="#CCC0B3"
 			}
 		}
 
