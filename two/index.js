@@ -1,5 +1,9 @@
+function game(){
 var blocks=document.querySelectorAll('div');
+var score_counter=document.getElementById("score");
 var empty=[];
+var score=0;
+score_counter.innerHTML=score;
 empty.length=blocks.length;
 var arr=new Array(4);
 for(var i=0;i<4;i++){
@@ -30,6 +34,7 @@ function fill(){
 fill();
 console.log(empty);
 document.body.addEventListener('keydown',function(event){
+	  
 	     if(empty.length==0){
 	     	alert("You Loose !!!");
 	     	window.location.reload();
@@ -66,6 +71,7 @@ function manipulate(dir){
 					}
 					else if(arr[i][k].value!=undefined&&arr[i][k].value==arr[i][j].value){
 						arr[i][k].value*=2;
+						score=score+arr[i][k].value;
 						arr[i][j].value=undefined;
 						empty.push(arr[i][j].id);
 					}
@@ -98,6 +104,7 @@ function manipulate(dir){
 					}
 					else if(arr[i][k].value!=undefined&&arr[i][k].value==arr[i][j].value){
 						arr[i][k].value*=2;
+						score=score+arr[i][k].value
 						arr[i][j].value=undefined;
 						empty.push(arr[i][j].id);
 					}
@@ -130,6 +137,7 @@ function manipulate(dir){
 					}
 					else if(arr[k][j].value!=undefined&&arr[k][j].value==arr[i][j].value){
 						arr[k][j].value*=2;
+						score=score+arr[k][j].value;
 						arr[i][j].value=undefined;
 						empty.push(arr[i][j].id);
 					}
@@ -162,6 +170,7 @@ function manipulate(dir){
 					}
 					else if(arr[k][j].value!=undefined&&arr[k][j].value==arr[i][j].value){
 						arr[k][j].value*=2;
+						score=score+arr[k][j].value;
 						arr[i][j].value=undefined;
 						empty.push(arr[i][j].id);
 					}
@@ -176,11 +185,9 @@ function manipulate(dir){
 			}
 
 		}
-	}
-	
-
-
+	}	
 	draw();
+	score_counter.innerHTML=score;
 	fill();
 }
 function draw(){
@@ -196,3 +203,5 @@ function draw(){
 
 	}
 }
+}
+game();

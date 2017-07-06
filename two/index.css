@@ -3,13 +3,13 @@
 	margin: 0px;
 }
 body{
+	width: 100%px;
 	height: 600px;
-	width: 100%;
 }
 #main{
    width: 418px;
    height: 418px;
-   position: fixed;
+   position: absolute;
    background-color: grey;
    left:500px;
    top:100px;
@@ -24,4 +24,14 @@ div{
    display: flex;
    justify-content: center;
    align-items: center;
+}
+#scorehead{
+	top:10px;
+	left:650px;
+	position: absolute;
+}
+#score{
+	top:40px;
+	left: 650px;
+	position: absolute;
 }
