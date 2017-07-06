@@ -1,0 +1,27 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+body{
+	height: 600px;
+	width: 100%;
+}
+#main{
+   width: 418px;
+   height: 418px;
+   position: fixed;
+   background-color: grey;
+   left:500px;
+   top:100px;
+   display: flex;
+   flex-wrap: wrap;
+}
+div{
+   background-color:yellow;
+   width: 100px;
+   height: 100px;
+   margin: 2px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
